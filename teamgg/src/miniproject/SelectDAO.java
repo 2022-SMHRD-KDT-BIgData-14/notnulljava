@@ -18,6 +18,30 @@ public class SelectDAO {
 	
 	public void SelectName() {
 
+		// 동적로딩-------------------------------------------------------------------------------
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			System.out.println("드라이버 성공");
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+
+		// DB연결----------------------------------------------------------------------------------------------
+		String url="jdbc:oracle:thin:@project-db-stu.ddns.net:1524:xe";
+		String db_id="campus_f_0516_2"; 
+		String db_pw="smhrd2";
+
+		try {
+			conn = DriverManager.getConnection(url, db_id, db_pw);
+			if (conn != null) {
+				System.out.println("DB 연결 성공");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	
+		
+
 		String[] arr_kyc = {"김영철(남성, 50대, 의사)", "-살인 사건이 일어난 것 때문에 무서워서 방에서 꼼짝하지 않았습니다."};
 		String[] arr_lks = {"이광식(남성, 20대, 킥복싱선수)", "-시합이 얼마 남지 않아서 방에서 연습을 했습니다."};
 		String[] arr_pcs = {"박철수(남성, 60대, 펜션관리자)", "-팬션 내부를 순찰했습니다."};
@@ -36,11 +60,7 @@ public class SelectDAO {
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, name); 
 			rs = psmt.executeQuery(); 
-			if (rs.next()) {
-			
-				name = rs.getString(1); 
-				System.out.println("에 해당하는 이름은" + name);
-			}
+
 
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -62,6 +82,8 @@ public class SelectDAO {
 			}
 		}
 		
+		System.out.println();
+		System.out.println("================================================================");
 		if(name.equals("김영철")) {
 			for(int i=0; i<arr_lks.length; i++) {System.out.println(arr_lks[i]);} //이광식
 			for(int j=0; j<arr_pcs.length; j++) {System.out.println(arr_pcs[j]);} //박철수 
