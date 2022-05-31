@@ -4,8 +4,8 @@ import java.util.Scanner;
 
 public class GameStart {
 
-	public static void main(String[] args) {
-Scanner sc = new Scanner(System.in);
+	public void GameStart() {
+	Scanner sc = new Scanner(System.in);
 	String gamestart = "[1]게임시작하기";
 	String back ="[2]이전 단계 가기";
 	
@@ -24,5 +24,7 @@ Scanner sc = new Scanner(System.in);
 	} //else 회원가입으로 넘어가기 
 	
 	}
+
+	
 
 }
