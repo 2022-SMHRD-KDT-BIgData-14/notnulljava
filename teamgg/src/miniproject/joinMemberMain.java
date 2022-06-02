@@ -2,13 +2,17 @@ package miniproject;
 
 import java.util.Scanner;
 
+import javazoom.jl.player.MP3Player;
+
 public class joinMemberMain {
 
 	public static String main(String[] args) {
 		String id = null;
 		Scanner sc = new Scanner(System.in);
 		joinMemberDAO dao = new joinMemberDAO();
-
+		MP3Player mp3 = new MP3Player();
+		mp3.play(".\\music\\playCatch.mp3");
+		
 		while (true) {
 			System.out.println("=================================================================");
 			System.out.println("♥ 게임을 시작하기 전 회원가입을 완료해주세요. 회원가입을 완료했다면 로그인을 해주세요! ♥");
@@ -30,6 +34,7 @@ public class joinMemberMain {
 //				dao.login(dto);
 
 				id = dao.login(dto);
+				
 				
 				System.out.println("=================================================================");
 				break;

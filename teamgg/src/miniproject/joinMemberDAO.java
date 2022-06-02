@@ -100,6 +100,8 @@ public class joinMemberDAO {
 					System.out.println(rs.getString(1) + "님 로그인 성공하셨습니다!");
 					
 				
+					
+			
 				}else System.out.println("로그인 실패");
 			}	
 		} catch (SQLException e) {

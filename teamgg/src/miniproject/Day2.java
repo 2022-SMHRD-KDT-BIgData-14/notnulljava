@@ -6,10 +6,13 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import javazoom.jl.player.MP3Player;
+
 public class Day2 {
 	Connection conn ; 
 	PreparedStatement psmt; 
 	ResultSet rs; 
+	MP3Player mp3 = new MP3Player();
 	public void select(String die_name) {
 		
 		try {
@@ -44,6 +47,7 @@ public class Day2 {
 				 if(die_name.equals("ÀÌ±¤½Ä")) {
 					 System.out.println("<<¾Ç¶öÇÑ ¸¶ÇÇ¾Æ " + die_name + "Àº Á×¾ú½À´Ï´Ù.>>");
 				 }else {
+					 mp3.play(".\\music\\playX.mp3");
 					 System.out.println("<<¼±·®ÇÑ ½Ã¹Î " + die_name + "Àº Á×¾ú½À´Ï´Ù>>");
 				 }
 				 System.out.println();
