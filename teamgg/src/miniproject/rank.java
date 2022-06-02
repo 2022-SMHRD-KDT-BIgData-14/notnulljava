@@ -28,7 +28,7 @@ public class rank {
 	}
 	    
 	long ResutlTime = (afterTime - beforeTime)/1000;
-	System.out.println("총 "+ ResutlTime + "분 사용하셨습니다.");
+	System.out.println("총 "+ ResutlTime + "초 사용하셨습니다.");
 
 
 	}

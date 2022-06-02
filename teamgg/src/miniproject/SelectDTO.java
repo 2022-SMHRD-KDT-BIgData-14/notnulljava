@@ -14,7 +14,7 @@ public class SelectDTO { //테이블별로 구성이 된다
 	public SelectDTO(String name, int age, String evidence1, String evidence2, String evidence3, String role,
 			String survive) {
 		super();
-		this.name = name;
+		this.setName(name);
 		this.age = age;
 		this.evidence1 = evidence1;
 		this.evidence2 = evidence2;
@@ -23,13 +23,17 @@ public class SelectDTO { //테이블별로 구성이 된다
 		this.survive = survive;
 	}
 	
+	
+	
+	
+	
 	public SelectDTO(String name, String survive) {
-		this.name = name;
+		this.setName(name);
 		this.survive = survive;
 	}
 	
 	public SelectDTO(String name) {
-		this.name = name;
+		this.setName(name);
 
 	}
 
@@ -56,6 +60,24 @@ public class SelectDTO { //테이블별로 구성이 된다
 	public void setRole(String role) {this.role = role;}
 
 	public void setSurvive(String survive) {this.survive = survive;}
+	
+	public void setname(String name) {this.setName(name);}
+
+
+
+
+
+	public String getName() {
+		return name;
+	}
+
+
+
+
+
+	public void setName(String name) {
+		this.name = name;
+	}
 
 
 }

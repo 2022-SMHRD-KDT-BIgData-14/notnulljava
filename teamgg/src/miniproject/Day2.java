@@ -41,6 +41,12 @@ public class Day2 {
 				 String time=rs.getString("time");
 				 String room_n=rs.getString("room_n");
 				 
+				 if(die_name.equals("이광식")) {
+					 System.out.println("<<악랄한 마피아 " + die_name + "은 죽었습니다.>>");
+				 }else {
+					 System.out.println("<<선량한 시민 " + die_name + "은 죽었습니다>>");
+				 }
+				 System.out.println();
 				 System.out.println("==============사건정보===================");
 					System.out.println("최초 발견자, 발견 시간 : "+name+ ", "+ time);
 					System.out.println("사망 추정 시간       :11:00pm ~ 12:00pm ");
@@ -48,6 +54,7 @@ public class Day2 {
 					System.out.println("사건 장소          :" +room_n);
 					System.out.println("사인              :과다출혈, 날붙이에 심장 관통");
 					System.out.println("======================================");
+					System.out.println();
 			}
 			
 			

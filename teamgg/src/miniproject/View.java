@@ -9,7 +9,6 @@ public class View {
 		
 		
 	SelectDAO dao = new SelectDAO();
-	
 	dao.SelectName();
 
 	}

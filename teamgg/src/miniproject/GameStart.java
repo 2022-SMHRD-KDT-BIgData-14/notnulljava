@@ -6,16 +6,17 @@ public class GameStart {
 
 	public void GameStart() {
 	Scanner sc = new Scanner(System.in);
-	String gamestart = "[1]게임시작하기";
-	String back ="[2]회원가입으로 돌아가기";
+	String login = "[1]로그인하기";
+	String gamestart ="[2]게임시작하기";
 	
-	System.out.println(gamestart + "\t"+back);
+	System.out.println(login + "\t"+gamestart);
 	int choice = sc.nextInt();
 	long BeforeTime = 0;
 	long AfterTime = 0;
 
+	joinMemberMain joinmembermain = new joinMemberMain();
 	
-	if(choice == 1) {
+	if(choice == 2) {
 		//여기에 시간 재는거 넣어주면 됩니당
 		BeforeTime = System.currentTimeMillis();
 		
@@ -28,7 +29,26 @@ public class GameStart {
 		System.out.println("『범인을 잡겠어!! 명탐정이셨던 할아버지의 이름을 걸고!』");
 		
 		System.out.println(BeforeTime);
-	} //else 회원가입으로 넘어가기 
+		System.out.println();
+	} //else 로그인으로 넘어가기 
+	else if(choice == 1) {
+		joinMemberDAO dao = new joinMemberDAO();
+		
+		System.out.print("로그인을 위한 ID를 입력하세요. >> ");
+		String input_id = sc.next();
+		System.out.print("로그인을 위한 PW를 입력하세요. >> ");
+		String input_pw = sc.next();
+		
+		joinMemberDTO dto = new joinMemberDTO(input_id, input_pw);
+
+//		dao.login(dto);
+//		joinmembermain.join();;	
+		
+
+//		String[] args = null;
+//		joinmembermain.main(args);
+		
+	}
 	
 	
 	}
