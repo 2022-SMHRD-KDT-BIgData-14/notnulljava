@@ -6,6 +6,39 @@ public class Minigame {
 
 	Scanner sc = new Scanner(System.in);
 
+	// SpecialGame 0 ==> 가위바위보
+	public void rspGame() {
+		Scanner sc = new Scanner(System.in);
+
+		System.out.print("Id를 입력하세요! : ");
+		String a = sc.next();
+
+		// 문자열 비교 => 'equals' 메소드 사용
+		// 비교할문자열1.equals(비교할문자열2) => True/False
+		while (true) {
+			System.out.print(a + "님 가위바위보를 시작합니다! 입력하세요 >> ");
+			String rsp = sc.next();
+
+			if (rsp.equals("가위")) {
+				System.out.println("축하합니다! 이겼습니다~!");
+				System.out.println("증거는 ~~~~~");
+				break;
+			} else if (rsp.equals("바위")) {
+				System.out.println("안타까워라~ 졌습니다ㅜㅡㅜ");
+				System.out.println("증거 획득에 실패했습니다!");
+				break;
+			} else if (rsp.equals("보")) {
+				System.out.println("비겼습니다! 한 번 더?");
+				System.out.print("한 번 더 하시겠습니까? [1]다시 하기 [2]종료 하기 >> ");
+				int choice = sc.nextInt();
+				if (choice == 2) {
+					System.out.println("증거 획득을 포기하셨습니다.");
+					break;
+				}
+			}
+		}
+	}
+	
 	// 난이도 level1 => 신조어 퀴즈
 	public void level1() {
 		

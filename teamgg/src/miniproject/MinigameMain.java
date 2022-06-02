@@ -17,6 +17,7 @@ public class MinigameMain {
 				+ "[3]level 3 \n"
 				+ "[4]level 4 \n"
 				+ "[5]level 5 \n");
+		System.out.print("[★0★]SpecialGame(0선택) \n");
 		System.out.print("level 선택 >> ");
 
 		while(true) {
@@ -31,6 +32,8 @@ public class MinigameMain {
 				game.level4();
 			}else if(level_choice == 5) {
 				game.level5();
+			}else if(level_choice == 0) {
+				game.rspGame();
 			}else System.out.print("번호를 다시 입력하세요! >> ");
 		}
 			
