@@ -4,7 +4,8 @@ import java.util.Scanner;
 
 public class joinMemberMain {
 
-	public static void main(String[] args) {
+	public static String main(String[] args) {
+		String id = null;
 		Scanner sc = new Scanner(System.in);
 		joinMemberDAO dao = new joinMemberDAO();
 
@@ -26,8 +27,10 @@ public class joinMemberMain {
 				System.out.print("로그인을 위한 PW를 입력하세요. >> ");
 				String input_pw = sc.next();
 				joinMemberDTO dto = new joinMemberDTO(input_id, input_pw);
+//				dao.login(dto);
 
-				dao.login(dto);
+				id = dao.login(dto);
+				
 				System.out.println("=================================================================");
 				break;
 			} else if (menu == 3) {
@@ -42,6 +45,8 @@ public class joinMemberMain {
 			}
 			break;
 		}
+		
+		return id;
 
 	}
 

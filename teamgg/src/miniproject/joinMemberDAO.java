@@ -77,9 +77,8 @@ public class joinMemberDAO {
 	}
 
 	// 로그인
-	public void login(joinMemberDTO dto) {
-
-		
+	public String login(joinMemberDTO dto) {
+		String result_id=null;
 		connect();
 
 		try {//SQL문 실행
@@ -94,11 +93,12 @@ public class joinMemberDAO {
 			rs = psmt.executeQuery();
 				
 			if(rs.next()) {
-				String result_id = rs.getString(1);
+				result_id = rs.getString(1);
 				String result_pw = rs.getString(2);
 				
 				if(result_id.equals(dto.getUser_id()) && result_pw.equals(dto.getUser_pw())) {
 					System.out.println(rs.getString(1) + "님 로그인 성공하셨습니다!");
+					
 				
 				}else System.out.println("로그인 실패");
 			}	
@@ -118,7 +118,7 @@ public class joinMemberDAO {
 			}
 		}catch (SQLException e) {
 			System.out.println("연결 종료 실패");
-		}
+		} return result_id;
 	}
 	public void connect() {
 		try {//동적로딩

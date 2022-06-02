@@ -2,9 +2,11 @@ package miniproject;
 
 import java.util.Scanner;
 
+import javazoom.jl.player.MP3Player;
+
 public class GameStart {
 
-	public void GameStart() {
+	public long GameStart() {
 	Scanner sc = new Scanner(System.in);
 	String login = "[1]로그인하기";
 	String gamestart ="[2]게임시작하기";
@@ -13,6 +15,7 @@ public class GameStart {
 	int choice = sc.nextInt();
 	long BeforeTime = 0;
 	long AfterTime = 0;
+	MP3Player mp3 = new MP3Player();
 
 	joinMemberMain joinmembermain = new joinMemberMain();
 	
@@ -21,6 +24,11 @@ public class GameStart {
 		BeforeTime = System.currentTimeMillis();
 		
 		//bgm
+		
+		if(mp3.isPlaying()) {
+			mp3.stop();}
+		mp3.play(".\\music\\playStart.mp3");
+		
 		System.out.println("20XX년 어느 여름\n폭풍이 몰아치는 스인재섬 펜션의 한밤중에..");
 		System.out.println("끄아아아아아악!");//bgm
 		System.out.println("다음날 ...\n202호에서 이호일이 죽은 채 발견되었다.");
@@ -50,6 +58,7 @@ public class GameStart {
 		
 	}
 	
+	return BeforeTime;
 	
 	}
 

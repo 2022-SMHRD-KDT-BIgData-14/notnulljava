@@ -7,10 +7,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Scanner;
 
+import javazoom.jl.player.MP3Player;
 import oracle.jdbc.driver.OracleDriver;//참고로 이 경로는 바뀌지않는다
 
 public class SelectDAO { 
-
+	MP3Player mp3 = new MP3Player();
 	Connection conn; 
 	PreparedStatement psmt; 
 	ResultSet rs; 
@@ -45,6 +46,7 @@ public class SelectDAO {
 		System.out.println("마피아로 지목할 대상을 고르세요");
 		System.out.print("[김영철] [이광식] [박철수] [홍아희] [김희미] [이병호]  ");
 		String name = sc.next();
+		mp3.play(".\\music\\playGun.mp3");
 		
 		String sql = "update people set survive = '죽었음' where name = ?";
 		try {
@@ -54,14 +56,15 @@ public class SelectDAO {
 			if(name.equals("이광식")) {
 				System.out.println("마피아를 지목하셨습니다");
 				System.out.println("종료하겠습니다");
-				
 				gameEnding ending = new gameEnding();
-				ending.lose();
+				ending.win();
+			
 			}else {
 				System.out.println();
 				Day2 day2 = new Day2();
 				day2.select(name);
 			}
+			
 
 		} catch (SQLException e) {
 			e.printStackTrace();

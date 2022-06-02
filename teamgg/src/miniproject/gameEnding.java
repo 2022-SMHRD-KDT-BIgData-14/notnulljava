@@ -2,12 +2,14 @@ package miniproject;
 
 import java.util.Scanner;
 
-public class gameEnding {
+import javazoom.jl.player.MP3Player;
 
+public class gameEnding {
+	MP3Player mp3 = new MP3Player();
 	Scanner sc = new Scanner(System.in);
-		
 	// 마피아 검거 성공 시
 	public void win() {
+		mp3.play(".\\music\\goodEnding.mp3");
 		System.out.println("★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★");
 		System.out.println("\r\n"
 				+ " __      __     ______      __  __     \r\n"
@@ -70,6 +72,7 @@ public class gameEnding {
 	}
 	// 마피아 검거 실패 시
 	public void lose() {
+		mp3.play(".\\music\\badEnding.mp3");
 		System.out.println("★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★");
 		System.out.println("\r\n"
 				+ "                                                                                                                                                                                                                                       \r\n"
@@ -100,8 +103,10 @@ public class gameEnding {
 	}
 	
 	public void ask() {
-		
 		long afterTime = 0;
+		RankDAO rankdao = new RankDAO();
+		MafiaGameMain m = new MafiaGameMain();
+		
 		while(true) {
 			System.out.print("[1]게임 종료 [2]게임 다시하기 >> ");
 			int choice = sc.nextInt();
@@ -109,12 +114,18 @@ public class gameEnding {
 			if(choice == 1) {
 				System.out.println("게임이 종료되었습니다!");
 				afterTime = System.currentTimeMillis();
-	
+				System.out.println("id : "+m.id+"--------------------------------------------------");
+				System.out.println("beforeTime : "+m.beforeTime+"--------------------------------------------------");
+				long ResutlTime = (afterTime - m.beforeTime)/1000;
+				System.out.println("총 "+ ResutlTime + "초 사용하셨습니다.");
+				rankdao.insertrank(m.id, ResutlTime);
+				
 				System.out.print("[1]랭크보기 [2] 게임 다시하기 >> ");
 				choice = sc.nextInt();
 				if(choice == 1) {
 					System.out.println("랭크보여주기");
-					
+					rankdao.rankselect();
+					break;
 				}else if(choice == 2) {	
 					System.out.println("게임다시시작");
 				}else System.out.println("번호를 잘못 입력하셨습니다.");
